@@ -1,0 +1,37 @@
+groups:
+- name: cpu_alerts
+  rules:
+  - alert: HighCpuUtilization
+    expr: cpu_utilization > (ewma(cpu_utilization[5m], 0.3) + 0.1)  # EWMA logic and threshold
+    labels:
+      severity: critical
+    annotations:
+      summary: "CPU utilization is too high"
+      description: "CPU utilization is above the threshold"
+      cpu_utilization: "{{ $value }}"  # Current CPU utilization
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# cpu_upper_threshold: "{{ ewma(cpu_utilization[5m], 0.3) + 0.1 }}"  # EWMA threshold calculation

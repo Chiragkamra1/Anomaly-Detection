@@ -1,0 +1,16 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'flask_app'
+    static_configs:
+      - targets: ['flask_app:8001']  # Adjust this based on your Docker setup
+
+rule_files:
+  - "./alert_rules.yml"  # Update this path if necessary
+
+
+alerting:
+  alertmanagers:
+    - static_configs:
+      - targets: ['alertmanager:9093']
